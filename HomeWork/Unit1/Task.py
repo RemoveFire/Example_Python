@@ -1,5 +1,4 @@
 def Task1_func():
-    day = int(-1)
     day = int(input("Введите день недели от 1 до 7: "))
     if day <= 0 or day > 7:
         print(f"Вы ввели число {day}.\nВведите значение от 1 до 7!")
