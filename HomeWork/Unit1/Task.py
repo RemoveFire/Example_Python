@@ -47,6 +47,8 @@ def Task4_func():
         print('x < 0 и y < 0')
     elif n == 4:
         print('x > 0 и y < 0')
+    else:
+        print('На координатной плоскости 4 четверти')
 
 def Task5_func():
     from math import sqrt
