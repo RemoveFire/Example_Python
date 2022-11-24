@@ -1,7 +1,6 @@
 import sys
 import Unit1
 
-
 def Continuation():
     while True:
         yes = {'yes', 'ye', 'y', '', 'н', 'не', 'неы', 'да'}
@@ -28,7 +27,7 @@ def NumberTask():
         try:
             number = int(input('\nВыберите номер задания от 1 до 5 и напишите выбранный номер: '))
         except ValueError:
-            print('Неправильный ввод')
+            print('Неправильный ввод. Выберите номер из предложенного списка от 1 до 5! ')
             break
         if number == 1:
             print('''
@@ -75,5 +74,5 @@ def NumberTask():
             Unit1.Task.Task5_func()
             break
         else:
-            sys.stdout.write('Выберите номер из предложенного списка')
+            sys.stdout.write('Выберите номер из предложенного списка от 1 до 5! ')
     Continuation()
