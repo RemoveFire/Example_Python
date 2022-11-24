@@ -26,7 +26,11 @@ def Continuation():
 
 def NumberTask():
     while True:
-        number = int(input('\nВыберите номер задания от 1 до 5 и напишите выбранный номер: '))
+        try:
+            number = int(input('\nВыберите номер задания от 1 до 5 и напишите выбранный номер: '))
+        except ValueError:
+            print('Неправильный ввод')
+            break
         if number == 1:
             print('''
             Выбрано задание №1
