@@ -1,10 +1,6 @@
 import sys
 import Unit1
 
-#Вывод названия числа,для выбора задания
-# Все это можно сделать иначе и правильней, но будет реализовано позже.
-# Статьи где можно посмотреть как лучше сделать: https://code.activestate.com/recipes/410692/
-# И еще: https://ru.stackoverflow.com/a/460208/530287
 
 def Continuation():
     while True:
@@ -17,13 +13,16 @@ def Continuation():
             NumberTask()
         elif phrase in no:
             print(f'\nВы выбрали: "{phrase}", поэтому работа программы Завершается\n')
-            quit()
+            sys.exit()
         else:
             sys.stdout.write("\n\t\t!!!Пожалуйста введите 'yes' или 'no'!!!"
                              "\n\t\t\t\t(или 'y' или 'n') \n")
             Continuation()
 
-
+#Вывод названия числа,для выбора задания
+# Все это можно сделать иначе и правильней, но будет реализовано позже.
+# Статьи где можно посмотреть как лучше сделать: https://code.activestate.com/recipes/410692/
+# И еще: https://ru.stackoverflow.com/a/460208/530287
 def NumberTask():
     while True:
         number = int(input('\nВыберите номер задания от 1 до 5 и напишите выбранный номер: '))
