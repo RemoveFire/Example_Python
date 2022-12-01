@@ -1,4 +1,7 @@
-def Task1_func():
+from math import sqrt
+
+
+def Task1():
     print("\nРешение задачи №1: \n")
     day = int(input("Введите день недели от 1 до 7: "))
     if day <= 0 or day > 7:
@@ -10,7 +13,8 @@ def Task1_func():
     elif day == 7:
         print(f"Вы ввели число: {day} и оно является -\tВоскресеньем")
 
-def Task2_func():
+
+def Task2():
     print("\nРешение задачи №2: \n")
     for x in range(0, 2):
         for y in range(0, 2):
@@ -18,7 +22,8 @@ def Task2_func():
                 if not (x or y or z) == (not x and not y and not z):
                     print(f'Утверждение ¬(X ⋁ Y ⋁ Z) = ¬X ⋀ ¬Y ⋀ ¬Z истинно при X = {x}, Y = {y}, Z = {z}. ')
 
-def Task3_func():
+
+def Task3():
     print("\nРешение задачи №3: \n")
     while True:
         try:
@@ -38,7 +43,8 @@ def Task3_func():
     elif x > 0 and y < 0:
         print(f'При координатах x = {x} и y = {y} ваша точка находится в плоскости 4 (IV четверть) ')
 
-def Task4_func():
+
+def Task4():
     print("\nРешение задачи №4: \n")
     n = int(input('Введите номер четверти: '))
     if n < 1 or n > 4:
@@ -54,8 +60,8 @@ def Task4_func():
     else:
         print('На координатной плоскости 4 четверти')
 
-def Task5_func():
-    from math import sqrt
+
+def Task5():
     print("\nРешение задачи №5: \n")
     while True:
         try:
