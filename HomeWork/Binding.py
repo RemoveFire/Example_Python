@@ -29,17 +29,17 @@ def Continuation():
 def UnitNumberTask():
     while True:
         try:
-            NumberUnit = int(input('\nВыберите номер УРОКА от 1 до 3 и напишите выбранный номер: '))
+            NumberUnit = int(input('\nВыберите номер СЕМИНАРА от 1 до 3 и напишите выбранный номер: '))
         except ValueError:
             print('Неправильный ввод. Выберите UNIT из предложенного списка от 1 до 3! ')
-            continue
+            break
         if NumberUnit == 1:
             print('\nВы выбрали семинар №1')
             try:
                 number = int(input('\nВыберите номер задания от 1 до 5 и напишите выбранный номер: '))
             except ValueError:
                 print('Неправильный ввод. Выберите номер из предложенного списка от 1 до 5! ')
-                break
+                continue
             Task.Unit_1_Task(number)
         elif NumberUnit == 2:
             print('\nВы выбрали семинар №2')
