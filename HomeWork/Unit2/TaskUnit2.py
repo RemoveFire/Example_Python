@@ -38,6 +38,15 @@ def WriteFile(number, roster):
             file.write(random.choice(roster))
             file.write("\n")
 
+def ReadFile():
+    with open(r".env", "r") as file:
+        mult_list = []
+        for line in file:
+            mult_list.append(int(line))
+    mult_list = mult_list[NumberLineStart - 1: NumberLineEnd: 1]
+    print(f"Диапазон элементов с {NumberLineStart} по {NumberLineEnd} строку: {mult_list}")
+    print("Произведение элементов:", functools.reduce(lambda mult, num: mult * num, mult_list))
+
 
 def U2Task1():
     print("Решение задачи №1: \n")
@@ -79,14 +88,7 @@ def U2Task4():
         else:
             print("\nНеверный ввод!")
 
-    with open(r".env", "r") as file:
-        mult_list = []
-        for line in file:
-            mult_list.append(int(line))
-    mult_list = mult_list[NumberLineStart - 1: NumberLineEnd: 1]
-
-    print(f"Диапазон элементов с {NumberLineStart} по {NumberLineEnd} строку: {mult_list}")
-    print("Произведение элементов:", functools.reduce(lambda mult, num: mult * num, mult_list))
+    ReadFile()
     os.chdir('..')
 
 
