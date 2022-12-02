@@ -83,13 +83,9 @@ def U2Task4():
         mult_list = []
         for line in file:
             mult_list.append(int(line))
-    mult_list = mult_list[ NumberLineStart - 1 : NumberLineEnd : 1 ]
+    mult_list = mult_list[NumberLineStart - 1: NumberLineEnd: 1]
 
     print(f"Диапазон элементов с {NumberLineStart} по {NumberLineEnd} строку: {mult_list}")
-    # mult = 1
-    # for num in mult_list:
-    #     mult = mult * num
-    # print(f"Произведение элементов: {mult}")
     print("Произведение элементов:", functools.reduce(lambda mult, num: mult * num, mult_list))
     os.chdir('..')
 
