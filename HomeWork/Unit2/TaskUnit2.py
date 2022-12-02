@@ -2,6 +2,7 @@ import os
 import time
 from math import factorial
 import random
+import functools
 
 
 def input_check(enter):
@@ -20,28 +21,16 @@ def WriteFile(number, roster):
     dir = 'database'
     if not os.path.exists(dir):
         os.mkdir(dir)
-        print(os.getcwd())
-        print("Directory ", dir, "is Created ")
+        print('Сейчас мы находимся в данной директории:: ', os.getcwd())
+        print(f"Директория '{dir}' создана! ")
         os.chdir(dir)
-        print(os.getcwd())
+        print('Перешли в директорию:: ', os.getcwd())
     else:
-        print("Directory ", dir, " already exists")
-        print(os.getcwd())
+        print(f"Директория '{dir}' уже существует! ")
+        print('Сейчас мы находимся в данной директории:: ', os.getcwd())
         os.chdir(dir)
-        print(os.getcwd())
+        print('Перешли в директорию::  ', os.getcwd())
 
-
-    # os.path.exists(os.path.join(os.getcwd(), 'database', '.env'))
-
-    #
-    # if not os.path.isdir("database"):
-    #     try:
-    #         os.mkdir("database")
-    #     except ValueError:
-    #         os.chdir('database')
-    #         print(os.getcwd())
-    #         os.path.exists('.env')
-    #     print(os.getcwd())
     for elem in range(-number, number):
         roster.append(str(elem))
     with open(r".env", "w") as file:
@@ -76,7 +65,7 @@ def U2Task3():
 
 
 def U2Task4():
-    global num_line_start, num_line_end
+    global NumberLineStart, NumberLineEnd
     print("Решение задачи №4: \n")
     n = int(input_check("Задайте диапазон элементов N: "))
     l = []
@@ -84,9 +73,8 @@ def U2Task4():
 
     check = True
     while check:
-        num_line_start = int(input_check("Введите позицию начала (номер строки) от 1 до N: "))
-        num_line_end = int(input_check("Введите позицию конца (номер строки) от 1 до N: "))
-        if 1 <= num_line_start < n and num_line_start < num_line_end <= n or n == 0:
+        NumberLineStart, NumberLineEnd = int(input_check("Введите номер строки НАЧАЛА от 1 до N: ")), int(input_check("Введите номер строки КОНЦА от 1 до N: "))
+        if 1 <= NumberLineStart < n and NumberLineStart < NumberLineEnd <= n or n == 0:
             check = False
         else:
             print("\nНеверный ввод!")
@@ -95,14 +83,16 @@ def U2Task4():
         mult_list = []
         for line in file:
             mult_list.append(int(line))
-    mult_list = mult_list[ num_line_start - 1 : num_line_end : 1 ]
+    mult_list = mult_list[ NumberLineStart - 1 : NumberLineEnd : 1 ]
 
-    print(f"Диапазон элементов с {num_line_start} по {num_line_end} строку: {mult_list}")
-    mult = 1
-    for num in mult_list:
-        mult = mult * num
-    print(f"Произведение элементов: {mult}")
+    print(f"Диапазон элементов с {NumberLineStart} по {NumberLineEnd} строку: {mult_list}")
+    # mult = 1
+    # for num in mult_list:
+    #     mult = mult * num
+    # print(f"Произведение элементов: {mult}")
+    print("Произведение элементов:", functools.reduce(lambda mult, num: mult * num, mult_list))
     os.chdir('..')
+
 
 def U2Task5():
     print("Решение задачи №5: \n")
