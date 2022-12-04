@@ -11,13 +11,18 @@ def U3Task2():
 
 def U3Task3():
     print("Решение задачи №3: \n")
-
+    num = n = int(input('Введите число для преобразования десятичного числа в двоичное: '))
+    BinNum = []
+    while num > 0:
+        BinNum.append(str(num % 2))
+        num //= 2
+    print(f'Число {n} в двоичной форме выглядит так: ', ("".join(BinNum)[::-1]))
 
 
 def U3Task4():
 
     print("Решение задачи №4: \n")
-    num = int(input('Enter how many numbers needed in Fibonacci series: '))
+    num = int(input('Введите, сколько чисел нужно в ряду  Нефигабоначчи: '))
 
     LstNum = []
     LstFib = []
