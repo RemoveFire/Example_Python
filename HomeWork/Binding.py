@@ -64,3 +64,15 @@ def UnitNumberTask():
         else:
             sys.stdout.write('Выберите UNIT из предложенного списка от 1 до 3! ')
     Continuation()
+
+def input_check(enter):
+    login = None
+    check = True
+    while check:
+        try:
+            login = float(input(f"{enter}"))
+            check = False
+        except ValueError:
+            print("Неверный ввод!")
+    return login
+

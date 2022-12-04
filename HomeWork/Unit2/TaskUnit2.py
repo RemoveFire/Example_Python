@@ -3,18 +3,8 @@ import time
 from math import factorial
 import random
 import functools
+from Binding import input_check
 
-
-def input_check(enter):
-    login = None
-    check = True
-    while check:
-        try:
-            login = float(input(f"{enter}"))
-            check = False
-        except ValueError:
-            print("Неверный ввод!")
-    return login
 
 
 def WriteFile(number, roster):
