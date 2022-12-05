@@ -12,7 +12,7 @@ def input_check(enter):
 
 def U3Task1():
     print("Решение задачи №1: \n")
-    lst = list(map(int, input("Введите числа через пробел(без запятых): ").split()))
+    lst = list(map(int, input("Введите числа через пробел(без запятых): ").split(",")))
     new = len(lst) // 2 + 1 if len(lst) % 2 != 0 else len(lst) // 2
     new_lst = [lst[i] * lst[len(lst) - i - 1] for i in range(new)]
     print(new_lst)
