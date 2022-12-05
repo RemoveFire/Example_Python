@@ -3,8 +3,18 @@ import time
 from math import factorial
 import random
 import functools
-from Binding import input_check
 
+
+def input_check(enter):
+    login = None
+    check = True
+    while check:
+        try:
+            login = float(input(f"{enter}"))
+            check = False
+        except ValueError:
+            print("Неверный ввод!")
+    return login
 
 
 def WriteFile(number, roster):
@@ -27,6 +37,7 @@ def WriteFile(number, roster):
         for num in range(0, number):
             file.write(random.choice(roster))
             file.write("\n")
+
 
 def ReadFile():
     with open(r".env", "r") as file:

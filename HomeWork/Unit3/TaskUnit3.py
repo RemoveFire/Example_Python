@@ -9,17 +9,21 @@ def input_check(enter):
             print("Неверный ввод!")
     return login
 
+
 def U3Task1():
     print("Решение задачи №1: \n")
-
+    lst = list(map(int, input("Введите числа через пробел(без запятых): ").split()))
+    new = len(lst) // 2 + 1 if len(lst) % 2 != 0 else len(lst) // 2
+    new_lst = [lst[i] * lst[len(lst) - i - 1] for i in range(new)]
+    print(new_lst)
 
 
 def U3Task2():
     print("Решение задачи №2: \n")
     lst = list(map(float, input("Введите числа через пробел: ").split()))
     new_lst = [round(i % 1, 2) for i in lst if i % 1 != 0]
-    print(f"Разница между максимальным ({max(new_lst)}) и минимальным ({min(new_lst)}) значением дробной части элементов = ", max(new_lst) - min(new_lst))
-
+    print(f"Разница между максимальным ({max(new_lst)}) и минимальным ({min(new_lst)})"
+          f" значением дробной части элементов = ", max(new_lst) - min(new_lst))
 
 
 def U3Task3():
@@ -48,4 +52,3 @@ def U3Task4():
         LstFib.append(fib1)
     LstFib.reverse()
     print(f'Негафиббоначи: {[*LstFib, 0, *LstNum]}')
-
