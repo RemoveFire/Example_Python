@@ -1,9 +1,6 @@
 from random import randint
-
-
-def RandomNaturalCoefficient():
-    numb = randint(0, 100)
-    return numb
+from sympy import symbols
+from math import prod
 
 
 def input_check(enter):
@@ -79,43 +76,25 @@ def U4Task3():
 
 def U4Task4():
     print("Решение задачи №4: \n")
-    def FormingString(k):
-        res = f'{RandomNaturalCoefficient()}*x**{k} + {RandomNaturalCoefficient()}*x + 5 = 0'
-        return res
 
-    userNumber = input('Set the natural power of the number: ')
+    def RandomNaturalCoefficient():
+        numb = randint(-100, 100)
+        return numb
 
-    with open('database\Data.txt', 'w') as data:
-        data.write(f'List of coefficients of a polynomial of degree {userNumber}:\n')
+    userNumber = int(input('Задайте натуральную степень многочлена k: '))
+
+    def KoeffForming(userNumber):
+        koeff = [RandomNaturalCoefficient() for i in range(userNumber)] + [RandomNaturalCoefficient()]
+        x = symbols('x')
+        y = sum(map(prod, zip(koeff, [x ** i for i in range(userNumber + 1)])))
+        return y
+
+    with open('database\Data_Unit4Task4.txt', 'w') as data:
+        data.write(f'Список коэффициентов многочлена в степени {userNumber}:\n')
         for i in range(10):
-            data.write(f'{FormingString(userNumber)}\n')
-# from random import randint
-# import random
-#
-# k = int(input('Введите число k: '))
-#
-# result = ''
-# temp = []
-# for i in range(k):
-#     temp.append(randint(0, 100))
-#
-#
-# znak = ['+', '-']
-# i = 0
-# j = 0
-# while k > 1:
-#     if temp[i] != 0:
-#         result += (f'{temp[i]}x**{k}{random.choice(znak)}')
-#     k -= 1
-#     i += 1
-#
-#
-# if temp[-1] != 0:
-#     result += (f'{temp[-1]}=0')
-# else:
-#     result += ('=0')
-# with open('result.txt', 'w', encoding='utf8') as file:
-#     file.write(f'Сгенерированные числа: {temp}\nОтвет: {result}')
+            data.write(f'{KoeffForming(userNumber)} = 0\n')
+            print(KoeffForming(userNumber), "= 0")
+
 
 def U4Task5():
     print("Решение задачи №5: \n")
