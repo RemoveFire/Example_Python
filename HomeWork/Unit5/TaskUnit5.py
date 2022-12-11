@@ -1,3 +1,4 @@
+import random
 from random import randint
 from sympy import symbols
 from math import prod
@@ -30,6 +31,16 @@ def input_check(enter):
 
 def U5Task1():
     print("Решение задачи №1: \n")
+
+    with open('database\singular.txt', 'r', encoding='utf8') as file:
+        text = file.readline().split()
+
+    print(f'Исходный текст в файле: {text}')
+    find = input("Введите что ищем в файле: ")
+    new_text = ' '.join(word for word in text if word.find(find) == -1)
+    print(f'Записываем в файл следующее содержимое: {new_text}')
+    with open('database\singular_result.txt', 'w') as datafile:
+        datafile.writelines(new_text)
 
 
 def U5Task2():
