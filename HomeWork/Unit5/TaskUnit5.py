@@ -1,7 +1,8 @@
 import random
-from random import randint, choice
-from sympy import symbols
 from math import prod
+from random import randint, choice
+
+from sympy import symbols
 
 
 def RandomNaturalCoefficient(RandMin, RandMax):
@@ -27,6 +28,8 @@ def input_check(enter):
         except ValueError:
             print("Неверный ввод!")
     return login
+
+
 
 
 def U5Task1():
@@ -127,7 +130,10 @@ def U5Task2():
 
 def U5Task3():
     print("Решение задачи №3: \n")
-
+    FirstPlayer = input("Первый Игрок.  Введите Ваше имя: ")
+    print("\n")
+    SecondPlayer = input("Второй Игрок. Введите Ваше имя: ")
+    print("\n")
     # Инициализация карты
     maps = [1, 2, 3,
             4, 5, 6,
@@ -170,9 +176,9 @@ def U5Task3():
         win = ""
         for i in victories:
             if maps[i[0]] == "X" and maps[i[1]] == "X" and maps[i[2]] == "X":
-                win = "X"
+                win = f"игрок {FirstPlayer}, играющий за X"
             if maps[i[0]] == "O" and maps[i[1]] == "O" and maps[i[2]] == "O":
-                win = "O"
+                win = f"игрок {SecondPlayer}, играющий заO"
         return win
 
     # Искусственный интеллект: поиск линии с нужным количеством X и O на победных линиях
@@ -198,7 +204,6 @@ def U5Task3():
 
     # Искусственный интеллект: выбор хода
     def AI():
-
         step = ""
 
         # 1) если на какой-либо из победных линий 2 свои фигуры и 0 чужих - ставим
@@ -226,10 +231,7 @@ def U5Task3():
 
     def player_human():
         human = True
-        FirstPlayer = input("Первый Игрок.  Введите Ваше имя: ")
-        print("\n")
-        SecondPlayer = input("Второй Игрок. Введите Ваше имя: ")
-        print("\n")
+
         game_over = False
         while game_over == False:
 
@@ -239,10 +241,10 @@ def U5Task3():
             # 2. Спросим у играющего куда делать ход
             if human == True:
                 symbol = "X"
-                step = int(input(f"{FirstPlayer}, ваш ход: "))
+                step = int(input(f"Игрок {FirstPlayer}, ваш ход: "))
             else:
                 symbol = "O"
-                step = int(input(f"{SecondPlayer}, ваш ход: "))
+                step = int(input(f"Игрок {SecondPlayer}, ваш ход: "))
 
             step_maps(step, symbol)  # делаем ход в указанную ячейку
             win = get_result()  # определим победителя
@@ -292,7 +294,7 @@ def U5Task3():
 
         # Игра окончена. Покажем карту. Объявим победителя.
         print_maps()
-        print("Победил", win)
+        print("Победил(а)", win)
 
     # Основная программа
 
@@ -305,7 +307,79 @@ def U5Task3():
 
 def U5Task4():
     print("Решение задачи №4: \n")
+    from Binding import writing_file as wf
 
+    def cleared(comprssed_file, recovered_file):
+        if input('Для очистки рабочих файлов введите 0.\n'
+                 'Для сохранения - другое число: ') == '0':
+            cleared_data = ''
+            cleared_file = comprssed_file
+            wf(cleared_data, cleared_file)
+            cleared_file = recovered_file
+            wf(cleared_data, recovered_file)
 
-def U5Task5():
-    print("Решение задачи №5: \n")
+    def data_flow_generator(user_file: str):
+        number_characters = random.randint(5, 20)
+        simbol_str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        data_flow = ''
+        for i in range(number_characters):
+            simbol_flow = random.choice(simbol_str)
+            number_repetitions = random.randint(1, 50)
+            for j in range(number_repetitions):
+                data_flow += simbol_flow
+        from Binding import writing_file as wf
+        wf(data_flow, user_file)
+        return data_flow
+
+    def rle_encoding(data):
+        encode_rle = ''
+        prev_char = ''
+        count = 1
+        if not data: return ''
+        for char in data:
+            if char != prev_char:
+                if prev_char:
+                    encode_rle += str(count) + prev_char
+                count = 1
+                prev_char = char
+            else:
+                count += 1
+        else:
+            encode_rle += str(count) + prev_char
+        return encode_rle
+
+    def rle_decoding(data):
+        decode_rle = ''
+        count = ''
+        for char in data:
+            if char in data:
+                if char.isdigit():
+                    count += char
+                else:
+                    decode_rle += char * int(count)
+                    count = ''
+        return decode_rle
+
+    work_file = 'database/Unit5/Data_Task_4_source.txt'
+    comprssed_file = 'database/Unit5/Data_Task_4_compressed.txt'
+    recovered_file = 'database/Unit5/Data_Task_4_recovered.txt'
+    cleared(comprssed_file, recovered_file)
+
+    way = input('Если Вы хотите сгенерировать новый поток данных, введите 1,\n'
+                'если нет - введите любое другое число: ')
+    if way == '1':
+        data_flow_generator(work_file)
+
+    from Binding import read_file as rf
+    incoming_stream = rf(work_file)
+
+    compressed_data = rle_encoding(incoming_stream)
+
+    wf(compressed_data, comprssed_file)
+
+    restored_data = rle_decoding(compressed_data)
+
+    wf(restored_data, recovered_file)
+
+    cleared(comprssed_file, recovered_file)
+
