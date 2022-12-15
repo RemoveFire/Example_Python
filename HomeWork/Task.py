@@ -3,6 +3,7 @@ from Unit2 import TaskUnit2
 from Unit3 import TaskUnit3
 from Unit4 import TaskUnit4
 from Unit5 import TaskUnit5
+from Unit6 import TaskUnit6
 
 def Unit_1_Task(NumU1):
     if NumU1 == 1:
@@ -235,3 +236,33 @@ def Unit_5_Task(NumU5):
         TaskUnit5.U5Task4()
     else:
         print('Выберите номер из предложенного списка от 1 до 4! ')
+
+def Unit_6_Task(NumU6):
+    if NumU6 == 1:
+        print('''
+        Выбрано задание №1
+        
+        Задача: предложить улучшения кода для уже решённых задач(3-5 задач):
+        С помощью использования лямбд, filter, map, zip, enumerate, list comprehension
+        ''')
+        TaskUnit6.U6Task1()
+    elif NumU6 == 2:
+        print('''
+        Выбрано задание № 2
+        
+        Доделать:
+        Напишите программу вычисления арифметического выражения заданного строкой. Используйте операции +,-,/,*. приоритет операций стандартный. 
+
+        *Пример:* 
+        2+2 => 4; 
+        1+2*3 => 7; 
+        1-2*3 => -5;
+        
+        - Добавьте возможность использования скобок, меняющих приоритет операций.
+        *Пример:* 
+        1+2*3 => 7; 
+        (1+2)*3 => 9;
+        ''')
+        TaskUnit6.U6Task2()
+    else:
+        print('Выберите номер из предложенного списка от 1 до 2! ')
