@@ -1,3 +1,7 @@
+import logging.config
+import logging
+
+from log.logger import logger_config
 from Unit1 import TaskUnit1
 from Unit2 import TaskUnit2
 from Unit3 import TaskUnit3
@@ -5,7 +9,13 @@ from Unit4 import TaskUnit4
 from Unit5 import TaskUnit5
 from Unit6 import TaskUnit6
 
+logging.config.dictConfig(logger_config)
+
+logger_debug = logging.getLogger("task_debug_logger")
+
+
 def Unit_1_Task(NumU1):
+    logger_debug.debug("Start Unit_1_Task(NumU1)")
     if NumU1 == 1:
         print('''
         Выбрано задание №1
@@ -15,12 +25,14 @@ def Unit_1_Task(NumU1):
         - 6 -> да
         - 7 -> да
         - 1 -> нет''')
+        logger_debug.debug("Выбран Юнит 1, задание 1")
         TaskUnit1.Task1()
     elif NumU1 == 2:
         print('''
         Выбрано задание № 2
         Напишите программу для проверки истинности утверждения ¬(X ⋁ Y ⋁ Z) = ¬X ⋀ ¬Y ⋀ ¬Z для всех значений предикат.
         ''')
+        logger_debug.debug("Выбран Юнит 1, задание 2")
         TaskUnit1.Task2()
     elif NumU1 == 3:
         print('''
@@ -32,28 +44,35 @@ def Unit_1_Task(NumU1):
         - x=2; y=4-> 1
         - x=-34; y=-30 -> 3
         ''')
+        logger_debug.debug("Выбран Юнит 1, задание 3")
         TaskUnit1.Task3()
     elif NumU1 == 4:
         print('''
         Выбрано задание № 4
-        Напишите программу, которая по заданному номеру четверти, показывает диапазон возможных координат точек в этой четверти (x и y).
+        Напишите программу, которая по заданному номеру четверти, 
+        показывает диапазон возможных координат точек в этой четверти (x и y).
         ''')
+        logger_debug.debug("Выбран Юнит 1, задание 4")
         TaskUnit1.Task4()
     elif NumU1 == 5:
         print('''
         Выбрано задание № 5
-        Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 2D пространстве.
+        Напишите программу, которая принимает на вход координаты двух точек 
+        и находит расстояние между ними в 2D пространстве.
     
         Пример:
         - A (3,6); B (2,1) -> 5,09
         - A (7,-5); B (1,-1) -> 7,21
         ''')
+        logger_debug.debug("Выбран Юнит 1, задание 5")
         TaskUnit1.Task5()
     else:
+        logger_debug.debug("Выбран номер не из списка от 1 до 5")
         print('Выберите номер из предложенного списка от 1 до 5! ')
 
 
 def Unit_2_Task(NumU2):
+    logger_debug.debug("Start Unit_2_Task(NumU2)")
     if NumU2 == 1:
         print('''
         Выбрано задание №1
@@ -63,6 +82,7 @@ def Unit_2_Task(NumU2):
         - 6782 -> 23
         - 0.56 -> 11
         ''')
+        logger_debug.debug("Выбран Юнит 2, задание 1")
         TaskUnit2.U2Task1()
     elif NumU2 == 2:
         print('''
@@ -72,6 +92,7 @@ def Unit_2_Task(NumU2):
         *Пример:*
         - пусть N = 4, тогда [ 1, 2, 6, 24 ] (1, 1*2, 1*2*3, 1*2*3*4)
         ''')
+        logger_debug.debug("Выбран Юнит 2, задание 2")
         TaskUnit2.U2Task2()
     elif NumU2 == 3:
         print('''
@@ -82,6 +103,7 @@ def Unit_2_Task(NumU2):
         - Для n = 3:  {1: 2, 2: 2.25 , 3: 2.37}
         *Необходимо сложить все значения словаря и вывести  сумму на экран.*
         ''')
+        logger_debug.debug("Выбран Юнит 2, задание 3")
         TaskUnit2.U2Task3()
     elif NumU2 == 4:
         print('''
@@ -90,6 +112,7 @@ def Unit_2_Task(NumU2):
         Найдите произведение элементов на указанных позициях. 
         Позиции хранятся в файле file.txt в одной строке одно число.
         ''')
+        logger_debug.debug("Выбран Юнит 2, задание 4")
         TaskUnit2.U2Task4()
     elif NumU2 == 5:
         print('''
@@ -98,12 +121,15 @@ def Unit_2_Task(NumU2):
         (Не используя библиотеки связанные с рандомом) 
         *(Доп задача, не влияющая на оценку)*
         ''')
+        logger_debug.debug("Выбран Юнит 2, задание 5")
         TaskUnit2.U2Task5()
     else:
+        logger_debug.debug("Выбран номер не из списка от 1 до 5")
         print('Выберите номер из предложенного списка от 1 до 5! ')
 
 
 def Unit_3_Task(NumU3):
+    logger_debug.debug("Start Unit_3_Task(NumU3)")
     if NumU3 == 1:
         print('''
         Выбрано задание №1
@@ -112,6 +138,7 @@ def Unit_3_Task(NumU3):
         *Пример:*
         - [2, 3, 4, 5, 6] => [12, 15, 16];
         - [2, 3, 5, 6] => [12, 15]''')
+        logger_debug.debug("Выбран Юнит 3, задание 1")
         TaskUnit3.U3Task1()
     elif NumU3 == 2:
         print('''
@@ -120,6 +147,7 @@ def Unit_3_Task(NumU3):
         
         *Пример:*
         - [1.1, 1.2, 3.1, 5.1, 10.01] => 0.19''')
+        logger_debug.debug("Выбран Юнит 3, задание 2")
         TaskUnit3.U3Task2()
     elif NumU3 == 3:
         print('''
@@ -130,6 +158,7 @@ def Unit_3_Task(NumU3):
         - 45 -> 101101
         - 3 -> 11
         - 2 -> 10''')
+        logger_debug.debug("Выбран Юнит 3, задание 3")
         TaskUnit3.U3Task3()
     elif NumU3 == 4:
         print('''
@@ -140,12 +169,15 @@ def Unit_3_Task(NumU3):
         - для k = 8 список будет выглядеть так: [-21 ,13, -8, 5, −3, 2, −1, 1, 0, 1, 1, 2, 3, 5, 8, 13, 21]
         [Негафибоначчи]
         ''')
+        logger_debug.debug("Выбран Юнит 3, задание 4")
         TaskUnit3.U3Task4()
     else:
+        logger_debug.debug("Выбран номер не из списка от 1 до 4")
         print('Выберите номер из предложенного списка от 1 до 4! ')
 
 
 def Unit_4_Task(NumU4):
+    logger_debug.debug("Start Unit_4_Task(NumU4)")
     if NumU4 == 1:
         print('''
         Выбрано задание №1
@@ -154,6 +186,7 @@ def Unit_4_Task(NumU4):
         *Пример:* 
         - при d = 0.0001, π = 3.1415.    10^-1 ≤ d ≤ 10^-10
         ''')
+        logger_debug.debug("Выбран Юнит 4, задание 1")
         TaskUnit4.U4Task1()
     elif NumU4 == 2:
         print('''
@@ -162,6 +195,7 @@ def Unit_4_Task(NumU4):
         Напишите программу, которая составит список простых множителей числа N.
         (Выполнили на семинаре)
         ''')
+        logger_debug.debug("Выбран Юнит 4, задание 2")
         TaskUnit4.U4Task2()
     elif NumU4 == 3:
         print('''
@@ -169,6 +203,7 @@ def Unit_4_Task(NumU4):
         Задайте последовательность чисел. 
         Напишите программу, которая выведет список неповторяющихся элементов исходной последовательности.
         ''')
+        logger_debug.debug("Выбран Юнит 4, задание 3")
         TaskUnit4.U4Task3()
     elif NumU4 == 4:
         print('''
@@ -180,6 +215,7 @@ def Unit_4_Task(NumU4):
         *Пример:* 
         - k=2 => 2*x² + 4*x + 5 = 0 или x² + 5 = 0 или 10*x² = 0
         ''')
+        logger_debug.debug("Выбран Юнит 4, задание 4")
         TaskUnit4.U4Task4()
     elif NumU4 == 5:
         print('''
@@ -198,16 +234,21 @@ def Unit_4_Task(NumU4):
             - 5*x^4 + 2*x^3 - 6*x^2 + 13*x + 43 = 0
             - Результат: 5*x^4 + 2*x^3 - 4*x^2 + 17*x + 48 = 0
         ''')
+        logger_debug.debug("Выбран Юнит 4, задание 5")
         TaskUnit4.U4Task5()
     else:
+        logger_debug.debug("Выбран номер не из списка от 1 до 5")
         print('Выберите номер из предложенного списка от 1 до 5! ')
 
+
 def Unit_5_Task(NumU5):
+    logger_debug.debug("Start Unit_5_Task(NumU5)")
     if NumU5 == 1:
         print('''
         Выбрано задание №1
         Напишите программу, удаляющую из текста все слова, содержащие ""абв"".
         ''')
+        logger_debug.debug("Выбран Юнит 5, задание 1")
         TaskUnit5.U5Task1()
     elif NumU5 == 2:
         print('''
@@ -221,23 +262,29 @@ def Unit_5_Task(NumU5):
         a) Добавьте игру против бота
         b) Подумайте как наделить бота ""интеллектом""
         ''')
+        logger_debug.debug("Выбран Юнит 5, задание 2")
         TaskUnit5.U5Task2()
     elif NumU5 == 3:
         print('''
         Выбрано задание № 3
         Создайте программу для игры в ""Крестики-нолики"".
         ''')
+        logger_debug.debug("Выбран Юнит 5, задание 3")
         TaskUnit5.U5Task3()
     elif NumU5 == 4:
         print('''
         Выбрано задание № 4
         Реализуйте RLE алгоритм: реализуйте модуль сжатия и восстановления данных.
         ''')
+        logger_debug.debug("Выбран Юнит 5, задание 4")
         TaskUnit5.U5Task4()
     else:
+        logger_debug.debug("Выбран номер не из списка от 1 до 4")
         print('Выберите номер из предложенного списка от 1 до 4! ')
 
+
 def Unit_6_Task(NumU6):
+    logger_debug.debug("Start Unit_6_Task(NumU6)")
     if NumU6 == 1:
         print('''
         Выбрано задание №1
@@ -245,6 +292,7 @@ def Unit_6_Task(NumU6):
         Задача: предложить улучшения кода для уже решённых задач(3-5 задач):
         С помощью использования лямбд, filter, map, zip, enumerate, list comprehension
         ''')
+        logger_debug.debug("Выбран Юнит 6, задание 1")
         TaskUnit6.U6Task1()
     elif NumU6 == 2:
         print('''
@@ -263,6 +311,8 @@ def Unit_6_Task(NumU6):
         1+2*3 => 7; 
         (1+2)*3 => 9;
         ''')
+        logger_debug.debug("Выбран Юнит 6, задание 2")
         TaskUnit6.U6Task2()
     else:
-        print('Выберите номер из предложенного списка от 1 до 2! ')
+        logger_debug.debug('Выбран номер не из списка от 1 до 2')
+        print('Выберите номер из предложенного списка от 1 до 2!')
