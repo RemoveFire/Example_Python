@@ -25,7 +25,7 @@ def main():
             - включает в себя 5 задач(5-ая задача с дополнениями)
         Урок 5. Ускоренная обработка данных: lambda, filter, map, zip, enumerate, list comprehension
             - включает в себя 4 задачи
-        Урок 6. 
+        Урок 6. Ускоренная обработка данных: lambda, filter, map, zip, enumerate, list comprehension. Продолжение 
             - включает в себя 2 задачи''')
     logger_info.info("Запускаем Binding.UnitNumberTask()")
 
