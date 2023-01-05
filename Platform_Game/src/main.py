@@ -17,11 +17,24 @@ class Background(Widget):
         self.cloud_texture.uvsize = (Window.width / self.cloud_texture.width, -1)   # Создание повторения картинки
         # ", -1" в конце указывается для инвертирования изображения, т.к. оно загружается верх ногами
 
+    def scroll_textures(self, time_passed):
+        # Update the uvpos of the texture / обновление uvpos текстуры
+        self.cloud_texture.uvpos = (
+            (self.cloud_texture.uvpos[0] - time_passed / 16.0) % Window.width, self.cloud_texture.uvpos[1])
+
+        # Redraw the texture / перерисовка текстуры
+        print("sctorll")
+
 
     pass
 
+from kivy.clock import Clock
 
 class MainApp(App):
+    def on_start(self):
+        # id: background в main.kv - явл.идетнитфикатором фона, к которому обращаемся self.root.ids.background
+        Clock.schedule_interval(self.root.ids.background.scroll_textures, 1/2.)
+
     pass
 
 
