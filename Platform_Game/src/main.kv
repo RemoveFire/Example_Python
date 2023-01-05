@@ -5,3 +5,7 @@ FloatLayout:
                 size: self.size
                 pos: self.pos
                 source: 'sky.png'
+            Rectangle:
+                size: self.width, 362
+                pos: self.pos[0], self.pos[1] + self.height - 362
+                texture: self.cloud_texture
