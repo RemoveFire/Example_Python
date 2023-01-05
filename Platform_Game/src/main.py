@@ -6,6 +6,8 @@ from kivy.core.window import Window
 from kivy.clock import Clock
 
 
+from pipe import Pipe
+
 class Background(Widget):
     cloud_texture = ObjectProperty(None)
     cloud_texture_2 = ObjectProperty(None)
@@ -28,6 +30,11 @@ class Background(Widget):
         self.floor_texture.wrap = 'repeat'
         self.floor_texture.uvsize = (Window.width / self.floor_texture.width, -1)
 
+    def on_size(self, *args):
+        self.cloud_texture.uvsize = (self.width / self.cloud_texture.width, -1)
+        self.cloud_texture_2.uvsize = (self.width / self.cloud_texture_2.width, -1)
+        self.floor_texture.uvsize = (self.width / self.floor_texture.width, -1)
+
     def scroll_textures(self, time_passed):
         # Update the uvpos of the texture / обновление uvpos текстуры
         self.cloud_texture.uvpos = (
@@ -35,10 +42,10 @@ class Background(Widget):
         # cloud_texture.uvpos[0] + time_passed - берем исходную позицию и с помощью
         # знака "+" или "-" указываем направление движения, далее указываем интенсивность обновления
         self.cloud_texture_2.uvpos = (
-            (self.cloud_texture_2.uvpos[0] - time_passed / 2.0) % Window.width, self.cloud_texture_2.uvpos[1])
+            (self.cloud_texture_2.uvpos[0] + time_passed / 2.0) % Window.width, self.cloud_texture_2.uvpos[1])
         # Добавляем движение текстуры пола
         self.floor_texture.uvpos = (
-            (self.floor_texture.uvpos[0] - time_passed / 6.0) % Window.width, self.floor_texture.uvpos[1])
+            (self.floor_texture.uvpos[0] + time_passed / 6.0) % Window.width, self.floor_texture.uvpos[1])
 
         # Redraw the texture / перерисовка текстуры
         texture = self.property('cloud_texture')
