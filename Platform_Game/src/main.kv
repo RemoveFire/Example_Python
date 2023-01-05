@@ -12,5 +12,9 @@ FloatLayout:
                 texture: self.cloud_texture
             Rectangle: # Добавляем вторую текстуру облака
                 size: self.width, 138
-                pos: self.pos[0], self.pos[1] + self.height - 138
+                pos: self.pos[0], self.pos[1] + self.height - 138 # "+ self.height - 138" - изначально положение по горизонтали внизу слева, с помощью этого поднимаем наверх
                 texture: self.cloud_texture_2
+            Rectangle:
+                size: self.width, 50
+                pos: self.pos[0], self.pos[1] # Так как это пол и нам нужно его поднимать, то позиции оставляем 0(слева) и 1(нижняя часть экрана)
+                texture: self.floor_texture
