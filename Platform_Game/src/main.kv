@@ -22,10 +22,12 @@ FloatLayout:
                 texture: self.floor_texture
     Pipe:
         size_hint: None, None
-        size: 64, root.height - 96
+        size: 64, root.height - 50
+        pos: 200, 50
+        pipe_center: 250
         canvas.before:
             Color:
-                rgba: 1, 1, 1, .2
+                rgba: 1, 1, 1, .3
             Rectangle:
                 size: self.size
                 pos: self.pos
