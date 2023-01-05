@@ -30,10 +30,7 @@ class Background(Widget):
         self.floor_texture.wrap = 'repeat'
         self.floor_texture.uvsize = (Window.width / self.floor_texture.width, -1)
 
-    def on_size(self, *args):
-        self.cloud_texture.uvsize = (self.width / self.cloud_texture.width, -1)
-        self.cloud_texture_2.uvsize = (self.width / self.cloud_texture_2.width, -1)
-        self.floor_texture.uvsize = (self.width / self.floor_texture.width, -1)
+
 
     def scroll_textures(self, time_passed):
         # Update the uvpos of the texture / обновление uvpos текстуры

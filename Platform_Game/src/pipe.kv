@@ -3,8 +3,13 @@
     bottom_cap_position: self.pipe_center - self.GAP_SIZE/2.0 - self.CAP_SIZE
     canvas.before:
         Rectangle:
-            # Нижний корпус текстуры / Bottom pipe body
+            # Нижний корпус текстуры, делаем основу тела / Bottom pipe body
             size: 48, self.bottom_cap_position - self.bottom_body_position # Определили высоту свой нижней части текстуры
-            pos: self.pos[0] + (64 - 48)/2.0, self.bottom_cap_position
+            pos: self.pos[0] + (64 - 48)/2.0, self.bottom_body_position
             texture: self.pipe_body_texture
             tex_coords: self.lower_pipe_tex_coords # Указываем, что необходимо продление текстуры, как мы ее укажем
+        Rectangle:
+            # Шапка колоны текстуры / Bottom pipe cap
+            size: 64, self.CAP_SIZE -1
+            pos: self.pos[0], self.bottom_cap_position
+            source: 'column_cap.png'
