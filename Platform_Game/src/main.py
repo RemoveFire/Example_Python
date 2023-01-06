@@ -8,6 +8,7 @@ from kivy.clock import Clock
 
 from pipe import Pipe
 
+
 class Background(Widget):
     cloud_texture = ObjectProperty(None)
     cloud_texture_2 = ObjectProperty(None)
@@ -16,7 +17,7 @@ class Background(Widget):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        # Create textures / Создание тексутр
+        # Create textures / Создание текстур
         self.cloud_texture = Image(source="cloud.png").texture
         self.cloud_texture.wrap = 'repeat'
         self.cloud_texture.uvsize = (Window.width / self.cloud_texture.width, -1)   # Создание повторения картинки
@@ -30,7 +31,10 @@ class Background(Widget):
         self.floor_texture.wrap = 'repeat'
         self.floor_texture.uvsize = (Window.width / self.floor_texture.width, -1)
 
-
+    def on_size(self, *args):
+        self.cloud_texture.uvsize = (self.width / self.cloud_texture.width, -1)
+        self.cloud_texture_2.uvsize = (self.width / self.cloud_texture.width, -1)
+        self.floor_texture.uvsize = (self.width / self.floor_texture.width, -1)
 
     def scroll_textures(self, time_passed):
         # Update the uvpos of the texture / обновление uvpos текстуры
@@ -57,10 +61,10 @@ class Background(Widget):
 
 class MainApp(App):
     def on_start(self):
-        # id: background в main.kv - явл.идетнитфикатором фона, к которому обращаемся self.root.ids.background
+        # id: background в main.kv - явл.идентификатором фона, к которому обращаемся self.root.ids.background
         Clock.schedule_interval(self.root.ids.background.scroll_textures, 1/60.)    # 1/60. - по сути кадры в секунды
-
     pass
 
 
-MainApp().run()
+if __name__ == "__main__":
+    MainApp().run()
