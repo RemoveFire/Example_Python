@@ -26,6 +26,12 @@ FloatLayout:
         size_hint: None, None   #   Делаем параметр None, чтобы не занимала весь экран
         on_release:
             app.start_game()    #   Создаем обращение к функции, после чего начнется игра
+    Bird:
+        source: '00_birds.png'
+        size_hint: None, None
+        size: 112, 61
+        pos: 20, (root.height - 50) / 2.0
+        id: bird
 
 #    Pipe:
 #        size_hint: None, None

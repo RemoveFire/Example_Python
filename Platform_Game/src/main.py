@@ -1,6 +1,6 @@
 from kivy.app import App
 from kivy.uix.widget import Widget
-from kivy.properties import ObjectProperty
+from kivy.properties import ObjectProperty, NumericProperty
 from kivy.uix.image import Image
 from kivy.core.window import Window
 from kivy.clock import Clock
@@ -60,14 +60,44 @@ class Background(Widget):
         texture.dispatch(self)
 
 
+class Bird(Image):  # Создаем класс птицы(Игрока)
+    velocity = NumericProperty(0)   # Задаем скорость
+
+    def on_touch_down(self, touch):     # Делаем функцию работы сенсора в любое время так,
+        self.source = '01_birds.png'    # что при приземлении будет меняться изображение
+        self.velocity = 150             # задаем скорость подпрыгивания и т.п
+        super().on_touch_down(touch)
+
+    def on_touch_up(self, touch):       # тоже самое, только работает для подьема, при этом заданные параметры
+        self. source = '00_birds.png'   # скорости и т.п будут действовать прежние, которые выше при касании в люб.месте
+        super().on_touch_up(touch)
+
+
 class MainApp(App):
     pipes = []  # Создаем пустой список, в который будем добавлять каждую свою трубу
+    GRAVITY = 300
 
     def on_start(self):
         # id: background в main.kv - явл.идентификатором фона, к которому обращаемся self.root.ids.background
         Clock.schedule_interval(self.root.ids.background.scroll_textures, 1/60.)    # 1/60. - по сути кадры в секунды
 
+    def move_bird(self, time_passed):  # Функция перемещения, движения птицы
+        bird = self.root.ids.bird
+        bird.y = bird.y + bird.velocity * time_passed   # Изменяем положение птицы по Y + скорость * на прошедшее время
+        bird.velocity = bird.velocity - self.GRAVITY * time_passed     # обновим ее скорость
+        self.check_collision()  # Используем функцию проверки столкновения
+
+    def check_collision(self):  # Проверка столкновения
+        bird = self.root.ids.bird
+        # Проверим каждую трубу и проверим не сталкивается ли птица / Go through each pipe and check if it collides
+        for pipe in self.pipes:
+            if pipe.collide_widget(bird): # если труба и птица перекрывают друг друга, то будет правдой
+                # Проверка находится ли птица между зазором / Check if bird is between the gap
+                if bird.y < (pipe.pipe_center - pipe.GAP_SIZE / 2.0):
+                    self.game_over()
+
     def start_game(self):
+        Clock.schedule_interval(self.move_bird, 1/60.)  # Создаем время с чистотой кадров для воспроизведения взмахов
         # Создаем текстуры труб / Create the pipes
         num_pipes = 5   # Задаем для начала параметр числа труб
         # Расстояние между трубами, которое рассчитывается из ширины окна
