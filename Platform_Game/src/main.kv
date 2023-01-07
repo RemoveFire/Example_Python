@@ -20,6 +20,13 @@ FloatLayout:
                 size: self.width, 50
                 pos: self.pos[0], self.pos[1] # Так как это пол и нам нужно его поднимать, то позиции оставляем 0(слева) и 1(нижняя часть экрана)
                 texture: self.floor_texture
+    # Создаем блок начала игры
+    Button:
+        text: 'Start game'
+        size_hint: None, None   #   Делаем параметр None, чтобы не занимала весь экран
+        on_release:
+            app.start_game()    #   Создаем обращение к функции, после чего начнется игра
+
 #    Pipe:
 #        size_hint: None, None
 #        size: 64, root.height - 50
@@ -31,23 +38,23 @@ FloatLayout:
 #            Rectangle:
 #                size: self.size
 #                pos: self.pos
-    Pipe:
-        size_hint: None, None
-        size: 64, root.height - 50
-        pos: 100, 50
-        pipe_center: 250
-    Pipe:
-        size_hint: None, None
-        size: 64, root.height - 50
-        pos: 450, 50
-        pipe_center: 350
-    Pipe:
-        size_hint: None, None
-        size: 64, root.height - 50
-        pos: 800, 50
-        pipe_center: 450
-    Pipe:
-        size_hint: None, None
-        size: 64, root.height - 50
-        pos: 1150, 50
-        pipe_center: 350
+#    Pipe:
+#        size_hint: None, None
+#        size: 64, root.height - 50
+#        pos: 100, 50
+#        pipe_center: 250
+#    Pipe:
+#        size_hint: None, None
+#        size: 64, root.height - 50
+#        pos: 450, 50
+#        pipe_center: 350
+#    Pipe:
+#        size_hint: None, None
+#        size: 64, root.height - 50
+#        pos: 800, 50
+#        pipe_center: 450
+#    Pipe:
+#        size_hint: None, None
+#        size: 64, root.height - 50
+#        pos: 1150, 50
+#        pipe_center: 350

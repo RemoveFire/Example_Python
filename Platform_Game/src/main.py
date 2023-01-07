@@ -7,6 +7,7 @@ from kivy.clock import Clock
 
 
 from pipe import Pipe
+from random import randint
 
 
 class Background(Widget):
@@ -43,7 +44,7 @@ class Background(Widget):
         # cloud_texture.uvpos[0] + time_passed - берем исходную позицию и с помощью
         # знака "+" или "-" указываем направление движения, далее указываем интенсивность обновления
         self.cloud_texture_2.uvpos = (
-            (self.cloud_texture_2.uvpos[0] + time_passed / 2.0) % Window.width, self.cloud_texture_2.uvpos[1])
+            (self.cloud_texture_2.uvpos[0] + time_passed / 6.0) % Window.width, self.cloud_texture_2.uvpos[1])
         # Добавляем движение текстуры пола
         self.floor_texture.uvpos = (
             (self.floor_texture.uvpos[0] + time_passed / 6.0) % Window.width, self.floor_texture.uvpos[1])
@@ -60,11 +61,55 @@ class Background(Widget):
 
 
 class MainApp(App):
+    pipes = []  # Создаем пустой список, в который будем добавлять каждую свою трубу
+
     def on_start(self):
         # id: background в main.kv - явл.идентификатором фона, к которому обращаемся self.root.ids.background
         Clock.schedule_interval(self.root.ids.background.scroll_textures, 1/60.)    # 1/60. - по сути кадры в секунды
-    pass
+
+    def start_game(self):
+        # Создаем текстуры труб / Create the pipes
+        num_pipes = 5   # Задаем для начала параметр числа труб
+        # Расстояние между трубами, которое рассчитывается из ширины окна
+        distance_between_pipes = Window.width / (num_pipes - 1)
+        for i in range(num_pipes):
+            pipe = Pipe()
+            # Установим центр трубу (расчет из зазора верха и низа),
+            # при этом будет случайным. Задаем исходя из высоты нашего пола,
+            # который равен 50 со смещением, к примеру 100. И зазор сверху должен быть ограничен высотой
+            pipe.pipe_center = randint(50 + 100, self.root.height - 100)
+            pipe.size_hint = (None, None)
+            # Делаем, где хотим чтоб труба располагалась, когда создаем (за пределами экрана справа) и делаем смещение
+            pipe.pos = ( i * distance_between_pipes, 50)
+            # Ширина трубы должна быть равна ширине cap_pipe (верхушки трубы).
+            # 64 - потому что размер картинки, далее высота трубы с вычетом пола
+            pipe.size = (64, self.root.height - 50)
+            # Добавим трубы при нажатии на кнопку старт
+            self.pipes.append(pipe)
+            self.root.add_widget(pipe)
+
+        # Перенос трубы раз в 60 кадров в секунду / Move the pipes
+        Clock.schedule_interval(self.move_pipes, 1/60.)
+
+    def move_pipes(self, time_passed):
+        # Перенесли все трубы, задали движение на лево
+        for pipe in self.pipes:
+            pipe.x -= time_passed * 100
+
+        # Проверка, не нужно ли поставить трубу справой стороны
+        # Check if we need to reposition the pipe at the right side
+
+        # Создаем текстуры труб / Create the pipes
+        num_pipes = 5  # Задаем для начала параметр числа труб
+        # Расстояние между трубами, которое рассчитывается из ширины окна
+        distance_between_pipes = Window.width / (num_pipes - 1)
+
+        pipe_xs = list(map(lambda pipe: pipe.x, self.pipes))  # Массив прохождения по каждому элементу трубы, помещаем x
+        right_most_x = max(pipe_xs)  # Проверяем крайнее правое - просто максимальное значение трубы
+        if right_most_x <= Window.width - distance_between_pipes:
+            # Если условие верно, то нам нужно получить левый x (самую левую трубу)
+            most_left_pipe = self.pipes[pipe_xs.index(min(pipe_xs))]
+            most_left_pipe.x = Window.width
 
 
-if __name__ == "__main__":
-    MainApp().run()
+MainApp().run()

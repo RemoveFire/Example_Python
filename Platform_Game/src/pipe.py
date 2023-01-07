@@ -1,11 +1,12 @@
 from kivy.uix.widget import Widget
 from kivy.properties import NumericProperty, ObjectProperty, ListProperty
 from kivy.uix.image import Image
+from kivy.clock import Clock
 
 
 class Pipe(Widget):
     # Numeric attributes / Числовые атрибуты
-    GAP_SIZE = NumericProperty(60)              # Размер зазора
+    GAP_SIZE = NumericProperty(80)              # Размер зазора
     CAP_SIZE = NumericProperty(20)              # Размер шапки колонны / Height of column_cap.png
     pipe_center = NumericProperty(0)            # Центр колонны
     bottom_body_position = NumericProperty(0)   # Нижнее расположение корпуса
@@ -36,3 +37,6 @@ class Pipe(Widget):
         # Растягиваем изображением с повторением в кол раз, на которое делим с определением точки для растяжения
         self.top_pipe_tex_coords[5] = top_body_size/20.
         self.top_pipe_tex_coords[7] = top_body_size/20.
+
+    def on_pipe_center(self, *args):    # Каждый раз, когда изменяется центр трубы, будет перерисовывать текстуры
+        Clock.schedule_once(self.on_size, 0)    # 0 - вызываем как только возможно сразу
