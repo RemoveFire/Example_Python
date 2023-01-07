@@ -6,7 +6,7 @@ from kivy.clock import Clock
 
 class Pipe(Widget):
     # Numeric attributes / Числовые атрибуты
-    GAP_SIZE = NumericProperty(80)              # Размер зазора
+    GAP_SIZE = NumericProperty(100)              # Размер зазора
     CAP_SIZE = NumericProperty(20)              # Размер шапки колонны / Height of column_cap.png
     pipe_center = NumericProperty(0)            # Центр колонны
     bottom_body_position = NumericProperty(0)   # Нижнее расположение корпуса

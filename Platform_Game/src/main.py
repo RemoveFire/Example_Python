@@ -91,10 +91,22 @@ class MainApp(App):
         bird = self.root.ids.bird
         # Проверим каждую трубу и проверим не сталкивается ли птица / Go through each pipe and check if it collides
         for pipe in self.pipes:
-            if pipe.collide_widget(bird): # если труба и птица перекрывают друг друга, то будет правдой
+            if pipe.collide_widget(bird):  # если труба и птица перекрывают друг друга, то будет правдой
                 # Проверка находится ли птица между зазором / Check if bird is between the gap
                 if bird.y < (pipe.pipe_center - pipe.GAP_SIZE / 2.0):
                     self.game_over()
+                if bird.top > (pipe.pipe_center + pipe.GAP_SIZE / 2.0):
+                    self.game_over()
+        if bird.y < 50:
+            self.game_over()
+        if bird.top < Window.height:
+            self.game_over()
+
+    def game_over(self):
+        self.root.ids.bird.source = '02_birds.png'
+        for pipe in self.pipes:
+            self.root.remove_widget(pipe)
+
 
     def start_game(self):
         Clock.schedule_interval(self.move_bird, 1/60.)  # Создаем время с чистотой кадров для воспроизведения взмахов
