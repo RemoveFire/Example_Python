@@ -1,13 +1,12 @@
 from kivy.app import App
 from kivy.uix.widget import Widget
-from kivy.properties import ObjectProperty, NumericProperty
+from kivy.properties import ObjectProperty
 from kivy.uix.image import Image
 from kivy.core.window import Window
 from kivy.clock import Clock
-
-
-from pipe import Pipe
 from random import randint
+from kivy.properties import NumericProperty
+from pipe import Pipe
 
 
 class Background(Widget):
@@ -21,7 +20,7 @@ class Background(Widget):
         # Create textures / Создание текстур
         self.cloud_texture = Image(source="cloud.png").texture
         self.cloud_texture.wrap = 'repeat'
-        self.cloud_texture.uvsize = (Window.width / self.cloud_texture.width, -1)   # Создание повторения картинки
+        self.cloud_texture.uvsize = (Window.width / self.cloud_texture.width, -1)  # Создание повторения картинки
         # ", -1" в конце указывается для инвертирования изображения, т.к. оно загружается верх ногами
 
         self.cloud_texture_2 = Image(source="cloud_2.png").texture
@@ -44,10 +43,10 @@ class Background(Widget):
         # cloud_texture.uvpos[0] + time_passed - берем исходную позицию и с помощью
         # знака "+" или "-" указываем направление движения, далее указываем интенсивность обновления
         self.cloud_texture_2.uvpos = (
-            (self.cloud_texture_2.uvpos[0] + time_passed / 6.0) % Window.width, self.cloud_texture_2.uvpos[1])
+            (self.cloud_texture_2.uvpos[0] + time_passed / 4.0) % Window.width, self.cloud_texture_2.uvpos[1])
         # Добавляем движение текстуры пола
         self.floor_texture.uvpos = (
-            (self.floor_texture.uvpos[0] + time_passed / 6.0) % Window.width, self.floor_texture.uvpos[1])
+            (self.floor_texture.uvpos[0] + time_passed) % Window.width, self.floor_texture.uvpos[1])
 
         # Redraw the texture / перерисовка текстуры
         texture = self.property('cloud_texture')
@@ -61,37 +60,40 @@ class Background(Widget):
 
 
 class Bird(Image):  # Создаем класс птицы(Игрока)
-    velocity = NumericProperty(0)   # Задаем скорость
+    velocity = NumericProperty(0)  # Задаем скорость
 
-    def on_touch_down(self, touch):     # Делаем функцию работы сенсора в любое время так,
-        self.source = '01_birds.png'    # что при приземлении будет меняться изображение
-        self.velocity = 150             # задаем скорость подпрыгивания и т.п
+    def on_touch_down(self, touch):  # Делаем функцию работы сенсора в любое время так,
+        self.source = '00_birds.png'  # что при приземлении будет меняться изображение
+        self.velocity = 170  # задаем скорость подпрыгивания и т.п
         super().on_touch_down(touch)
 
-    def on_touch_up(self, touch):       # тоже самое, только работает для подьема, при этом заданные параметры
-        self. source = '00_birds.png'   # скорости и т.п будут действовать прежние, которые выше при касании в люб.месте
+    def on_touch_up(self, touch):  # то же самое, только работает для подъема, при этом заданные параметры
+        self.source = '01_birds.png'  # скорости и т.п будут действовать прежние, которые выше при касании в люб.месте
         super().on_touch_up(touch)
 
 
 class MainApp(App):
     pipes = []  # Создаем пустой список, в который будем добавлять каждую свою трубу
-    GRAVITY = 300
+    GRAVITY = 540  # Гравитация
+    was_colliding = False
 
-    def on_start(self):
-        # id: background в main.kv - явл.идентификатором фона, к которому обращаемся self.root.ids.background
-        Clock.schedule_interval(self.root.ids.background.scroll_textures, 1/60.)    # 1/60. - по сути кадры в секунды
+    # def on_start(self):
+    # id: background в main.kv - явл.идентификатором фона, к которому обращаемся self.root.ids.background
+    # Clock.schedule_interval(self.root.ids.background.scroll_textures, 1/60.)    # 1/60. - по сути кадры в секунды
 
     def move_bird(self, time_passed):  # Функция перемещения, движения птицы
         bird = self.root.ids.bird
-        bird.y = bird.y + bird.velocity * time_passed   # Изменяем положение птицы по Y + скорость * на прошедшее время
-        bird.velocity = bird.velocity - self.GRAVITY * time_passed     # обновим ее скорость
+        bird.y = bird.y + bird.velocity * time_passed  # Изменяем положение птицы по Y + скорость * на прошедшее время
+        bird.velocity = bird.velocity - self.GRAVITY * time_passed  # обновим ее скорость
         self.check_collision()  # Используем функцию проверки столкновения
 
     def check_collision(self):  # Проверка столкновения
         bird = self.root.ids.bird
         # Проверим каждую трубу и проверим не сталкивается ли птица / Go through each pipe and check if it collides
+        is_colliding = False  # Инициализируем столкновение, как ложное
         for pipe in self.pipes:
             if pipe.collide_widget(bird):  # если труба и птица перекрывают друг друга, то будет правдой
+                is_colliding = True
                 # Проверка находится ли птица между зазором / Check if bird is between the gap
                 if bird.y < (pipe.pipe_center - pipe.GAP_SIZE / 2.0):
                     self.game_over()
@@ -99,19 +101,38 @@ class MainApp(App):
                     self.game_over()
         if bird.y < 50:
             self.game_over()
-        if bird.top < Window.height:
+        if bird.top > Window.height:
             self.game_over()
 
-    def game_over(self):
-        self.root.ids.bird.source = '02_birds.png'
-        for pipe in self.pipes:
-            self.root.remove_widget(pipe)
+        if self.was_colliding and not is_colliding:  # Если не столкнулись - означает, что мы прошли через трубу
+            self.root.ids.score.text = str(int(self.root.ids.score.text) + 1)  # Значение очков+1(т.к. столкнулись) -
+            # - преобразовали обратно в текст (т.е: строка(int(число строкой)+1)
+        self.was_colliding = is_colliding
 
+    def game_over(self):
+        # self.root.ids.bird_dead.source = '02_birds.png'  # будет меняться изображение на "мертвую птичку"
+        self.root.ids.bird.pos = (200, (self.root.height - 50) / 2.0)  # задали положение птички после окончания игры
+        for pipe in self.pipes:
+            self.root.remove_widget(pipe)  # проходим и удаляем трубы
+        self.frames.cancel()
+        self.root.ids.start_button.disabled = False
+        self.root.ids.start_button.opacity = 1  # Присваиваем 1, для отображения текста начала игры
+
+    def next_frame(self, time_passed):
+        self.move_bird(time_passed)
+        # Перенос трубы раз в 60 кадров в секунду / Move the pipes
+        self.move_pipes(time_passed)
+        self.root.ids.background.scroll_textures(time_passed)
 
     def start_game(self):
-        Clock.schedule_interval(self.move_bird, 1/60.)  # Создаем время с чистотой кадров для воспроизведения взмахов
+        self.root.ids.score.text = '0'  # Делаем обновление
+        self.was_colliding = False  # Повторно инициализируем параметр как лож
+        self.pipes = []
+        # Clock.schedule_interval(self.move_bird, 1/60.)  # Создаем время с чистотой кадров для воспроизведения взмахов
+        self.frames = Clock.schedule_interval(self.next_frame, 1 / 60)
+
         # Создаем текстуры труб / Create the pipes
-        num_pipes = 5   # Задаем для начала параметр числа труб
+        num_pipes = 5  # Задаем для начала параметр числа труб
         # Расстояние между трубами, которое рассчитывается из ширины окна
         distance_between_pipes = Window.width / (num_pipes - 1)
         for i in range(num_pipes):
@@ -122,16 +143,17 @@ class MainApp(App):
             pipe.pipe_center = randint(50 + 100, self.root.height - 100)
             pipe.size_hint = (None, None)
             # Делаем, где хотим чтоб труба располагалась, когда создаем (за пределами экрана справа) и делаем смещение
-            pipe.pos = ( i * distance_between_pipes, 50)
+            pipe.pos = (Window.width + i * distance_between_pipes, 50)
             # Ширина трубы должна быть равна ширине cap_pipe (верхушки трубы).
             # 64 - потому что размер картинки, далее высота трубы с вычетом пола
             pipe.size = (64, self.root.height - 50)
+
             # Добавим трубы при нажатии на кнопку старт
             self.pipes.append(pipe)
             self.root.add_widget(pipe)
 
         # Перенос трубы раз в 60 кадров в секунду / Move the pipes
-        Clock.schedule_interval(self.move_pipes, 1/60.)
+        # Clock.schedule_interval(self.move_pipes, 1/60.)
 
     def move_pipes(self, time_passed):
         # Перенесли все трубы, задали движение на лево

@@ -20,47 +20,28 @@ FloatLayout:
                 size: self.width, 50
                 pos: self.pos[0], self.pos[1] # Так как это пол и нам нужно его поднимать, то позиции оставляем 0(слева) и 1(нижняя часть экрана)
                 texture: self.floor_texture
+    Label:
+        id: score   #   Добавляем счет очков через проход труб
+        size_hint_y: None
+        height: 30  #   Задаем положение равное высоте земли для расположения там счета
+        text: "0"   #   Присваиваем начальное кол. очков
+        font_size: 40
+
     # Создаем блок начала игры
     Button:
         text: 'Start game'
-        size_hint: None, None   #   Делаем параметр None, чтобы не занимала весь экран
+        font_size: 100
+        pos: root.width / 50.0 , (root.height) / 10.0
+        background_normal: 'transparent.png'  # Делаем нормальный фон, при этом добавляем картинку без ничего(прозрачную)
+        background_down: 'transparent.png'
+        id: start_button    #   Присвоили идентификатор для обращения в game_over
         on_release:
+            self.disabled = True
+            self.opacity = 0    #   Чтоб не было видно текста после нажатия кнопки
             app.start_game()    #   Создаем обращение к функции, после чего начнется игра
     Bird:
         source: '00_birds.png'
         size_hint: None, None
-        size: 112, 61
-        pos: 20, (root.height - 50) / 2.0
+        size: 42, 34
+        pos: (200, (root.height - 50) / 2.0)
         id: bird
-
-#    Pipe:
-#        size_hint: None, None
-#        size: 64, root.height - 50
-#        pos: 200, 50
-#        pipe_center: 450 # Меняя центр можно поменять и размер виджета текстуры
-#        canvas.before:
-#            Color:
-#                rgba: 1, 1, 1, .1
-#            Rectangle:
-#                size: self.size
-#                pos: self.pos
-#    Pipe:
-#        size_hint: None, None
-#        size: 64, root.height - 50
-#        pos: 100, 50
-#        pipe_center: 250
-#    Pipe:
-#        size_hint: None, None
-#        size: 64, root.height - 50
-#        pos: 450, 50
-#        pipe_center: 350
-#    Pipe:
-#        size_hint: None, None
-#        size: 64, root.height - 50
-#        pos: 800, 50
-#        pipe_center: 450
-#    Pipe:
-#        size_hint: None, None
-#        size: 64, root.height - 50
-#        pos: 1150, 50
-#        pipe_center: 350

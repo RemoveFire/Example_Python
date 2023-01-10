@@ -6,7 +6,7 @@ from kivy.clock import Clock
 
 class Pipe(Widget):
     # Numeric attributes / Числовые атрибуты
-    GAP_SIZE = NumericProperty(100)              # Размер зазора
+    GAP_SIZE = NumericProperty(130)             # Размер зазора
     CAP_SIZE = NumericProperty(20)              # Размер шапки колонны / Height of column_cap.png
     pipe_center = NumericProperty(0)            # Центр колонны
     bottom_body_position = NumericProperty(0)   # Нижнее расположение корпуса
@@ -27,7 +27,7 @@ class Pipe(Widget):
         self.pipe_body_texture.wrap = 'repeat'
 
     def on_size(self, *args):
-        lower_body_size = self.bottom_cap_position + self.bottom_body_position
+        lower_body_size = self.bottom_cap_position - self.bottom_body_position
 
         self.lower_pipe_tex_coords[5] = lower_body_size/20.
         self.lower_pipe_tex_coords[7] = lower_body_size/20.
