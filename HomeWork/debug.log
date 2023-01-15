@@ -1,0 +1,53 @@
+2022-12-30 13:35:54,400 - DEBUG - main_debug_logger - Start Program
+2022-12-30 13:36:27,343 - DEBUG - main_debug_logger - Start Program
+2022-12-30 13:36:47,330 - DEBUG - main_debug_logger - Start Program
+2022-12-30 13:36:53,117 - DEBUG - main_debug_logger - Start Program
+2022-12-30 13:37:02,108 - DEBUG - main_debug_logger - Start Program
+DEBUG    2022-12-30 13:39:57,710 main_debug_logger Start Program
+2022-12-30 13:41:02,546 - DEBUG    - main_debug_logger - Start Program
+2022-12-30 13:41:53,166 - DEBUG    - main_debug_logger - Start Program
+2022-12-30 13:41:57,884 - DEBUG    - task_debug_logger - Start Unit_6_Task(NumU6)
+2022-12-30 13:43:15,090 - DEBUG - main_debug_logger - Start Program
+2022-12-30 13:43:20,042 - DEBUG - task_debug_logger - Start Unit_6_Task(NumU6)
+2022-12-30 13:43:48,693 - DEBUG - main_debug_logger - Start Program
+2022-12-30 13:43:52,986 - DEBUG - task_debug_logger - Start Unit_6_Task(NumU6)
+2022-12-30 13:52:01,216 - DEBUG - main_debug_logger - Start Program
+2022-12-30 13:52:06,624 - DEBUG - task_debug_logger - Start Unit_6_Task(NumU6)
+2022-12-30 13:52:06,624 - DEBUG - task_debug_logger - None
+2022-12-30 13:52:11,291 - DEBUG - task_debug_logger - Start Unit_6_Task(NumU6)
+2022-12-30 13:52:12,775 - DEBUG - task_debug_logger - None
+2022-12-30 13:52:57,153 - DEBUG - main_debug_logger - Start Program
+2022-12-30 13:53:00,277 - DEBUG - task_debug_logger - Start Unit_6_Task(NumU6)
+2022-12-30 13:53:00,278 - DEBUG - task_debug_logger - Выберите номер из предложенного списка от 1 до 2! 
+2022-12-30 14:16:29,295 - DEBUG - main_debug_logger - Start Program
+2022-12-30 14:16:37,785 - DEBUG - task_debug_logger - Start Unit_1_Task(NumU1)
+2022-12-30 14:16:37,785 - DEBUG - task_debug_logger - Выбран Юнит 1, задание 1
+2022-12-30 14:16:45,935 - DEBUG - task_debug_logger - Start Unit_3_Task(NumU3)
+2022-12-30 14:16:45,935 - DEBUG - task_debug_logger - Выбран Юнит 3, задание 2
+2022-12-30 14:16:56,943 - DEBUG - main_debug_logger - Start Program
+2022-12-30 14:17:04,130 - DEBUG - task_debug_logger - Start Unit_5_Task(NumU5)
+2022-12-30 14:17:04,130 - DEBUG - task_debug_logger - Выбран Юнит 5, задание 4
+2022-12-30 14:17:50,018 - DEBUG - task_debug_logger - Start Unit_6_Task(NumU6)
+2022-12-30 14:17:50,018 - DEBUG - task_debug_logger - Выбран номер не из списка от 1 до 2
+2022-12-30 14:17:57,037 - DEBUG - task_debug_logger - Start Unit_3_Task(NumU3)
+2022-12-30 14:17:57,037 - DEBUG - task_debug_logger - Выбран номер не из списка от 1 до 4
+2022-12-30 14:18:02,567 - DEBUG - task_debug_logger - Start Unit_6_Task(NumU6)
+2022-12-30 14:18:02,568 - DEBUG - task_debug_logger - Выбран Юнит 6, задание 2
+2023-01-14 18:21:29,431 - DEBUG - main_debug_logger - Start Program
+2023-01-14 18:21:43,537 - DEBUG - task_debug_logger - Start Unit_6_Task(NumU6)
+2023-01-14 18:21:43,538 - DEBUG - task_debug_logger - Выбран Юнит 6, задание 1
+2023-01-14 18:24:07,060 - DEBUG - main_debug_logger - Start Program
+2023-01-14 18:24:18,522 - DEBUG - task_debug_logger - Start Unit_6_Task(NumU6)
+2023-01-14 18:24:18,522 - DEBUG - task_debug_logger - Выбран Юнит 6, задание 1
+2023-01-14 18:25:09,181 - DEBUG - main_debug_logger - Start Program
+2023-01-14 18:25:15,040 - DEBUG - task_debug_logger - Start Unit_6_Task(NumU6)
+2023-01-14 18:25:15,040 - DEBUG - task_debug_logger - Выбран Юнит 6, задание 1
+2023-01-14 18:26:20,599 - DEBUG - main_debug_logger - Start Program
+2023-01-14 18:26:28,173 - DEBUG - task_debug_logger - Start Unit_6_Task(NumU6)
+2023-01-14 18:26:28,173 - DEBUG - task_debug_logger - Выбран Юнит 6, задание 1
+2023-01-14 18:29:30,797 - DEBUG - main_debug_logger - Start Program
+2023-01-14 18:29:34,221 - DEBUG - task_debug_logger - Start Unit_6_Task(NumU6)
+2023-01-14 18:29:34,221 - DEBUG - task_debug_logger - Выбран Юнит 6, задание 1
+2023-01-14 18:30:01,591 - DEBUG - main_debug_logger - Start Program
+2023-01-14 18:30:04,539 - DEBUG - task_debug_logger - Start Unit_6_Task(NumU6)
+2023-01-14 18:30:04,540 - DEBUG - task_debug_logger - Выбран Юнит 6, задание 1
