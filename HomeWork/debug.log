@@ -51,3 +51,7 @@ DEBUG    2022-12-30 13:39:57,710 main_debug_logger Start Program
 2023-01-14 18:30:01,591 - DEBUG - main_debug_logger - Start Program
 2023-01-14 18:30:04,539 - DEBUG - task_debug_logger - Start Unit_6_Task(NumU6)
 2023-01-14 18:30:04,540 - DEBUG - task_debug_logger - Выбран Юнит 6, задание 1
+2023-01-23 17:05:29,028 - DEBUG - main_debug_logger - Start Program
+2023-01-23 17:05:41,993 - DEBUG - main_debug_logger - Start Program
+2023-01-23 17:05:49,098 - DEBUG - task_debug_logger - Start Unit_12_Task(NumU12)
+2023-01-23 17:05:49,098 - DEBUG - task_debug_logger - Выбран Юнит 12, задание 1

@@ -90,11 +90,20 @@ def UnitNumberTask():
         elif NumberUnit == 11:
             print('\nВы выбрали семинар №11')
             try:
-                number = int(input('\nВыберите номер задания от 1 до 2 и напишите выбранный номер: '))
+                number = int(input('\nВыберите номер задания от 1 до 1 и напишите выбранный номер: '))
             except ValueError:
-                print('Неправильный ввод. Выберите номер из предложенного списка от 1 до 2! ')
+                print('Неправильный ввод. Выберите номер из предложенного списка от 1 до 1! ')
                 break
             Task.Unit_11_Task(number)
+            Continuation()
+        elif NumberUnit == 12:
+            print('\nВы выбрали семинар №12')
+            try:
+                number = int(input('\nВыберите номер задания от 1 до 1 и напишите выбранный номер: '))
+            except ValueError:
+                print('Неправильный ввод. Выберите номер из предложенного списка от 1 до 1! ')
+                break
+            Task.Unit_12_Task(number)
             Continuation()
         else:
             sys.stdout.write('Выберите UNIT из предложенного списка от 1 до 6! ')

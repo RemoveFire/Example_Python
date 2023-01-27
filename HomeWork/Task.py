@@ -9,6 +9,7 @@ from Unit4 import TaskUnit4
 from Unit5 import TaskUnit5
 from Unit6 import TaskUnit6
 from Unit11 import TaskUnit11
+from Unit12 import TaskUnit12
 
 logging.config.dictConfig(logger_config)
 
@@ -320,7 +321,7 @@ def Unit_6_Task(NumU6):
 
 
 def Unit_11_Task(NumU11):
-    logger_debug.debug("Start Unit_6_Task(NumU6)")
+    logger_debug.debug("Start Unit_11_Task(NumU11)")
     if NumU11 == 1:
         print('''
         Выбрано задание №1
@@ -328,8 +329,23 @@ def Unit_11_Task(NumU11):
         Задача: предложить улучшения кода для уже решённых задач(3-5 задач):
         С помощью использования лямбд, filter, map, zip, enumerate, list comprehension
         ''')
-        logger_debug.debug("Выбран Юнит 6, задание 1")
+        logger_debug.debug("Выбран Юнит 11, задание 1")
         TaskUnit11.U11Task1()
     else:
-        logger_debug.debug('Выбран номер не из списка от 1 до 2')
-        print('Выберите номер из предложенного списка от 1 до 2!')
+        logger_debug.debug('Выбран номер не из списка от 1 до 1')
+        print('Выберите номер из предложенного списка от 1 до 1!')
+
+def Unit_12_Task(NumU12):
+    logger_debug.debug("Start Unit_12_Task(NumU12)")
+    if NumU12 == 1:
+        print('''
+        Выбрано задание №1
+
+        Задача: предложить улучшения кода для уже решённых задач(3-5 задач):
+        С помощью использования лямбд, filter, map, zip, enumerate, list comprehension
+        ''')
+        logger_debug.debug("Выбран Юнит 12, задание 1")
+        TaskUnit12.U12Task1()
+    else:
+        logger_debug.debug('Выбран номер не из списка от 1 до 1')
+        print('Выберите номер из предложенного списка от 1 до 1!')
