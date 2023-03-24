@@ -55,3 +55,33 @@ DEBUG    2022-12-30 13:39:57,710 main_debug_logger Start Program
 2023-01-23 17:05:41,993 - DEBUG - main_debug_logger - Start Program
 2023-01-23 17:05:49,098 - DEBUG - task_debug_logger - Start Unit_12_Task(NumU12)
 2023-01-23 17:05:49,098 - DEBUG - task_debug_logger - Выбран Юнит 12, задание 1
+2023-03-24 19:19:33,307 - DEBUG - main_debug_logger - Start Program
+2023-03-24 19:21:36,723 - DEBUG - main_debug_logger - Start Program
+2023-03-24 19:22:14,673 - DEBUG - main_debug_logger - Start Program
+2023-03-24 19:22:25,293 - DEBUG - task_debug_logger - Start oop_Unit_1_Task(oopNum1)
+2023-03-24 19:22:25,293 - DEBUG - task_debug_logger - Выбрано Объектно-ориентированное программирование Юнит 7, задание 1
+2023-03-24 19:28:50,019 - DEBUG - main_debug_logger - Start Program
+2023-03-24 19:29:51,300 - DEBUG - main_debug_logger - Start Program
+2023-03-24 19:30:26,005 - DEBUG - task_debug_logger - Start oop_Unit_1_Task(oopNum1)
+2023-03-24 19:30:26,006 - DEBUG - task_debug_logger - Выбрано Объектно-ориентированное программирование Юнит 7, задание 1
+2023-03-24 19:32:25,931 - DEBUG - main_debug_logger - Start Program
+2023-03-24 19:40:05,777 - DEBUG - main_debug_logger - Start Program
+2023-03-24 19:40:15,575 - DEBUG - task_debug_logger - Start oop_Unit_1_Task(oopNum1)
+2023-03-24 19:40:15,575 - DEBUG - task_debug_logger - Выбрано Объектно-ориентированное программирование Юнит 7, задание 1
+2023-03-24 19:41:20,888 - DEBUG - main_debug_logger - Start Program
+2023-03-24 19:41:24,620 - DEBUG - task_debug_logger - Start oop_Unit_1_Task(oopNum1)
+2023-03-24 19:41:24,621 - DEBUG - task_debug_logger - Выбрано Объектно-ориентированное программирование Юнит 7, задание 1
+2023-03-24 19:41:46,252 - DEBUG - task_debug_logger - Start oop_Unit_1_Task(oopNum1)
+2023-03-24 19:41:46,253 - DEBUG - task_debug_logger - Выбрано Объектно-ориентированное программирование Юнит 7, задание 1
+2023-03-24 19:42:15,303 - DEBUG - task_debug_logger - Start oop_Unit_1_Task(oopNum1)
+2023-03-24 19:42:15,304 - DEBUG - task_debug_logger - Выбран номер не из списка от 1 до 1
+2023-03-24 20:10:26,009 - DEBUG - main_debug_logger - Start Program
+2023-03-24 20:11:17,166 - DEBUG - task_debug_logger - Start oop_Unit_1_Task(oopNum1)
+2023-03-24 20:11:17,167 - DEBUG - task_debug_logger - Выбрано Объектно-ориентированное программирование Юнит 7, задание 1
+2023-03-24 20:12:39,188 - DEBUG - main_debug_logger - Start Program
+2023-03-24 20:12:43,958 - DEBUG - main_debug_logger - Start Program
+2023-03-24 20:12:48,455 - DEBUG - task_debug_logger - Start oop_Unit_1_Task(oopNum1)
+2023-03-24 20:12:48,455 - DEBUG - task_debug_logger - Выбрано Объектно-ориентированное программирование Юнит 7, задание 1
+2023-03-24 20:17:51,797 - DEBUG - main_debug_logger - Start Program
+2023-03-24 20:18:00,284 - DEBUG - task_debug_logger - Start oop_Unit_1_Task(oopNum1)
+2023-03-24 20:18:00,285 - DEBUG - task_debug_logger - Выбрано Объектно-ориентированное программирование Юнит 7, задание 1

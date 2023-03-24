@@ -29,7 +29,8 @@ def Continuation():
 def UnitNumberTask():
     while True:
         try:
-            NumberUnit = int(input('\nВыберите номер СЕМИНАРА от 1 до 6 и напишите выбранный номер: '))
+            NumberUnit = int(input('\nВыберите номер СЕМИНАРА от 1 до 6 или 11, 12 и напишите выбранный номер. '
+                                   'Для раздела OOP введите - "13"! \n Ввод:  '))
         except ValueError:
             print('Неправильный ввод. Выберите UNIT из предложенного списка от 1 до 6! ')
             break
@@ -105,8 +106,18 @@ def UnitNumberTask():
                 break
             Task.Unit_12_Task(number)
             Continuation()
+        elif NumberUnit == 13:
+            print('\nВы выбрали семинар OOP №1')
+            try:
+                number = int(input('\nВыберите номер задания от 1 до 1 и напишите выбранный номер: '))
+            except ValueError:
+                print('Неправильный ввод. Выберите номер из предложенного списка от 1 до 1! ')
+                break
+            Task.oop_Unit_1_Task(number)
+            Continuation()
         else:
-            sys.stdout.write('Выберите UNIT из предложенного списка от 1 до 6! ')
+            sys.stdout.write('Выберите UNIT из предложенного списка от 1 до 6 или 11, 12. Для раздела OOP введите - 13!'
+                             '\n Ввод:  ')
     Continuation()
 
 

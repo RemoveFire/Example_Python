@@ -1,6 +1,7 @@
 import logging.config
 import logging
 
+import oopUnit1.src.controll.controller
 from log.logger import logger_config
 from Unit1 import TaskUnit1
 from Unit2 import TaskUnit2
@@ -10,6 +11,7 @@ from Unit5 import TaskUnit5
 from Unit6 import TaskUnit6
 from Unit11 import TaskUnit11
 from Unit12 import TaskUnit12
+from oopUnit1 import main_task
 
 logging.config.dictConfig(logger_config)
 
@@ -335,6 +337,7 @@ def Unit_11_Task(NumU11):
         logger_debug.debug('Выбран номер не из списка от 1 до 1')
         print('Выберите номер из предложенного списка от 1 до 1!')
 
+
 def Unit_12_Task(NumU12):
     logger_debug.debug("Start Unit_12_Task(NumU12)")
     if NumU12 == 1:
@@ -346,6 +349,21 @@ def Unit_12_Task(NumU12):
         ''')
         logger_debug.debug("Выбран Юнит 12, задание 1")
         TaskUnit12.U12Task1()
+    else:
+        logger_debug.debug('Выбран номер не из списка от 1 до 1')
+        print('Выберите номер из предложенного списка от 1 до 1!')
+
+
+def oop_Unit_1_Task(oopNum1):
+    logger_debug.debug("Start oop_Unit_1_Task(oopNum1)")
+    if oopNum1 == 1:
+        print('''
+        Выбрано задание №1
+
+        Задача: Необходимо реализовать свой проект на каком-то другом языке программирования
+        ''')
+        logger_debug.debug("Выбрано Объектно-ориентированное программирование Юнит 7, задание 1")
+        main_task.oopU7Task1()
     else:
         logger_debug.debug('Выбран номер не из списка от 1 до 1')
         print('Выберите номер из предложенного списка от 1 до 1!')

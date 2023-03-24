@@ -1,5 +1,5 @@
 def export_data():
-    with open('data/phone.csv', 'r') as file:
+    with open('oopUnit1/src/data/phone.csv', 'r', encoding="utf-8") as file:
         data = []
         t = []
         for line in file:

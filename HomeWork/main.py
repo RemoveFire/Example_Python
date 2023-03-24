@@ -26,7 +26,13 @@ def main():
         Урок 5. Ускоренная обработка данных: lambda, filter, map, zip, enumerate, list comprehension
             - включает в себя 4 задачи
         Урок 6. Ускоренная обработка данных: lambda, filter, map, zip, enumerate, list comprehension. Продолжение 
-            - включает в себя 2 задачи''')
+            - включает в себя 2 задачи
+        Урок 11. Jupyter Notebook и несколько слов об аналитике
+        Урок 12. Jupyter Notebook и несколько слов об аналитике. Продолжение
+        
+        Объектно-ориентированное программирование (семинары)
+        Урок 7. ООП Дизайн и Solid ч.2 (в программе как "13")
+            - Необходимо реализовать свой проект на каком-то другом языке программирования''')
     logger_info.info("Запускаем Binding.UnitNumberTask()")
 
     Binding.UnitNumberTask()
@@ -34,4 +40,5 @@ def main():
 
 # Запускаем главную функцию
 logger_debug.debug("Start Program")
+print("\n")
 main()
